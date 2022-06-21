@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react'; 
 
 function Login({onLogin}) {
     const [username, setUsername] = useState("")
@@ -25,7 +25,6 @@ function Login({onLogin}) {
             }
         })
     }
-
 
   return (
     <form onSubmit={handleSubmit}> 
