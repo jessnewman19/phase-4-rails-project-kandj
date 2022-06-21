@@ -1,4 +1,5 @@
 import Home from './Home';
+import NavBar from './NavBar';
 import React, {useState, useEffect} from "react";
 import {Switch, Route} from "react-router-dom"; 
 
@@ -20,6 +21,7 @@ function App() {
   
   return (
     <>
+    <NavBar user={user} setUser={setUser}/>
       <main>
         <Switch>
           <Route path="/new">
