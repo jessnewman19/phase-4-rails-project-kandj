@@ -1,22 +1,28 @@
 import React, {useState} from 'react'; 
 
-function Login({onLogin}) {
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
-    const [errors, setErrors] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
+import Error from "../styles/Error.js";
+import Label from '../styles/Label.js';
+import Input from '../styles/Input.js';
+import FormDiv from '../styles/FormDiv.js';
+import Button from '../styles/Button.js'
+
+
+function Login({ onLogin }) {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [errors, setErrors] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     function handleSubmit(e) { 
         e.preventDefault()
         setIsLoading(true)
-        fetch('/login', { 
+        fetch("/login", { 
             method: "POST",
             headers: { 
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({username, password}),
-        })
-        .then(r => { 
+        }).then(r => { 
             setIsLoading(false)
             if (r.ok) { 
                 r.json().then(user => onLogin(user))
@@ -28,34 +34,34 @@ function Login({onLogin}) {
 
   return (
     <form onSubmit={handleSubmit}> 
-        <div> 
-            <label>Username: </label>
-            <input 
+        <FormDiv> 
+            <Label>Username: </Label>
+            <Input 
             type="text" 
             id="username" 
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             />
-        </div>
-        <div>
-            <label>Password: </label>
-            <input 
+        </FormDiv>
+        <FormDiv>
+            <Label>Password: </Label>
+            <Input 
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             />
-        </div>
-        <div> 
-            <button type="submit">
+        </FormDiv>
+        <FormDiv> 
+            <Button type="submit" bg ='#000080' color='#fff'>
                 {isLoading ? "Loading..." : "Login"}
-            </button>
-        </div>
-        <div> 
+            </Button>
+        </FormDiv>
+        <FormDiv> 
             {errors.map(error => (
-                <div key={error}>{error}</div>
+                <Error key={error}>{error}</Error>
             ))} 
-        </div>
+        </FormDiv>
     </form>
   )
 }

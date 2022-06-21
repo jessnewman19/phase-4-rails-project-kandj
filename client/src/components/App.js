@@ -1,4 +1,4 @@
-import Login from './Login';
+import Home from './Home';
 import React, {useState, useEffect} from "react";
 import {Switch, Route} from "react-router-dom"; 
 
@@ -15,14 +15,19 @@ function App() {
     });
   }, [])
 
-  if (!user) return <Login onLogin={setUser} />
+  if (!user) return <Home onLogin={setUser} />
 
+  
   return (
     <>
-      <Switch>
-        <Route>
-        </Route>
-      </Switch>
+      <main>
+        <Switch>
+          <Route path="/new">
+          </Route>
+          <Route path="/">
+          </Route>
+        </Switch>
+      </main>
     </>
   );
 }

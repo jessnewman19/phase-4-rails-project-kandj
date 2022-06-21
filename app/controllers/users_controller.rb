@@ -5,13 +5,9 @@ class UsersController < ApplicationController
 
     def create 
         user = User.create!(user_params)
-        session[:user_id]: user.id
+        session[:user_id] = user.id
         render json: user, status: :created 
     end
-
-    def index
-        render json: User.all 
-    end 
 
     #Finds user by id saved in session hash
     #@current_user defined in the application controller
