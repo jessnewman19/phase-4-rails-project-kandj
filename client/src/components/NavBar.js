@@ -3,7 +3,7 @@ import { GiWaterBottle } from "react-icons/gi"
 
 //import styled components 
 import Button from '../styles/Button';
-import {Nav, NavLink, NavHomeLink} from '../styles/Nav';
+import {Nav, NavLink, Logo} from '../styles/Nav';
 import Container from '../styles/Container';
 
 function NavBar({user, setUser}) {
@@ -20,12 +20,15 @@ function NavBar({user, setUser}) {
 
   return (
     <Nav>
-        <NavHomeLink to="welcome">
+        <Logo>
             <GiWaterBottle />
-        </NavHomeLink>
+        </Logo>
         <Container>
             <NavLink to="dashboard">
                 Dashboard
+            </NavLink>
+            <NavLink to="tracker">
+                Tracker
             </NavLink>
             <NavLink to="add">
                 Add drink

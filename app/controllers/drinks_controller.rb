@@ -10,14 +10,14 @@ class DrinksController < ApplicationController
     end 
 
     def create 
-        drink = Drink.create!(drink_params)
+        drink = @current_user.drinks.create!(drink_params)
         render json: drink, status: :created
     end
 
     private 
 
     def drink_params 
-        params.permit(:drink_type, :hydration_level, :user_id, :description_id)
+        params.permit(:drink_type, :hydration_level, :location, :user_id, :description_id)
     end
     
 end

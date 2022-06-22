@@ -3,6 +3,7 @@ class CreateDrinks < ActiveRecord::Migration[6.1]
     create_table :drinks do |t|
       t.string :drink_type
       t.string :hydration_level
+      t.string :location
       t.references :user, null: false, foreign_key: true
       t.references :description, null: false, foreign_key: true
 

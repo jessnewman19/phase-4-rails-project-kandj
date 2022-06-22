@@ -29,9 +29,8 @@ export const NavLink = styled(Link)`
     }
 `
 
-export const NavHomeLink = styled(Link)`
+export const Logo = styled.div`
     color: #000080;
-    cursor: pointer;
     padding-left: 30px;
     justify-content: flex-start;
     display: flex;
@@ -39,9 +38,6 @@ export const NavHomeLink = styled(Link)`
     text-decoration: none;
     font-size: 7.5rem;
     font-weight: 800;
-    transition: all .5s ease;
-    &:hover{
-        transform: scale(1.08);
-        opacity: 0.8; 
-}
 `
+
+//Add media styling?

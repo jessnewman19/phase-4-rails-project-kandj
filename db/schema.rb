@@ -16,9 +16,7 @@ ActiveRecord::Schema.define(version: 2022_06_19_230343) do
   enable_extension "plpgsql"
 
   create_table "descriptions", force: :cascade do |t|
-    t.string "header"
-    t.string "body"
-    t.string "location"
+    t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -26,6 +24,7 @@ ActiveRecord::Schema.define(version: 2022_06_19_230343) do
   create_table "drinks", force: :cascade do |t|
     t.string "drink_type"
     t.string "hydration_level"
+    t.string "location"
     t.bigint "user_id", null: false
     t.bigint "description_id", null: false
     t.datetime "created_at", precision: 6, null: false

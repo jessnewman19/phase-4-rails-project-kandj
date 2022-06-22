@@ -7,20 +7,25 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #Seeding descriptions
-Description.create(header: 'Feeling hydrated AF!', body: 'Drink was refreshing', location: 'Home')
-Description.create(header: 'Not feeling so great', body: 'Need some water', location: 'Home')
-Description.create(header: 'Ready for my workout', body: 'Heading to the gym', location: 'Gym')
-Description.create(header: 'Yummy', body: 'Hydrated as heck.', location: 'Home')
-Description.create(header: 'Glass of wine with dinner', body: 'Liquid courage', location: 'Restaurant')
+Description.create(content: 'Feeling hydrated AF!')
+Description.create(content: 'Not feeling so great')
+Description.create(content: 'Could use some more water')
+Description.create(content: 'Liquid courage')
+Description.create(content: 'Last drink of the day!')
+Description.create(content: 'Almost fainted before this ...')
+Description.create(content: 'On a roll today!')
+Description.create(content: 'Getting those electrolytes')
+Description.create(content: 'Dehydrated')
+Description.create(content: 'Feeling pretty good.')
 
 #Seeding drinks 
-Drink.create(drink_type: 'coffee', hydration_level: '3', user_id: 1, description_id: 1)
-Drink.create(drink_type: 'water', hydration_level: '9', user_id: 1, description_id: 2)
-Drink.create(drink_type: 'gatorade', hydration_level: '7', user_id: 2, description_id: 3)
-Drink.create(drink_type: 'wine', hydration_level: '3', user_id: 1, description_id: 4)
-Drink.create(drink_type: 'beer', hydration_level: '3', user_id: 2, description_id: 5)
-Drink.create(drink_type: 'tea', hydration_level: '5', user_id: 1, description_id: 1)
-Drink.create(drink_type: 'kombucha', hydration_level: '8', user_id: 2, description_id: 2)
+# Drink.create(drink_type: 'Coffee', hydration_level: '3', user_id: 1, description_id: 1)
+# Drink.create(drink_type: 'Water', hydration_level: '9', user_id: 1, description_id: 2)
+# Drink.create(drink_type: 'Gatorade', hydration_level: '7', user_id: 2, description_id: 3)
+# Drink.create(drink_type: 'Wine', hydration_level: '3', user_id: 1, description_id: 4)
+# Drink.create(drink_type: 'Beer', hydration_level: '3', user_id: 2, description_id: 5)
+# Drink.create(drink_type: 'Tea', hydration_level: '5', user_id: 1, description_id: 1)
+# Drink.create(drink_type: 'Kombucha', hydration_level: '8', user_id: 2, description_id: 2)
 
 # #Seeding users 
 # User.create(full_name: 'Jessica Newman', username: 'jess', password: '1234', password_confirmation: '1234', gender: 'F', weight: 140)

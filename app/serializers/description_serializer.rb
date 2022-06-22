@@ -1,3 +1,3 @@
 class DescriptionSerializer < ActiveModel::Serializer
-  attributes :id, :header, :body, :location
+  attributes :id, :content
 end
