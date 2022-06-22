@@ -2,6 +2,7 @@ import Home from './Home';
 import NavBar from './NavBar';
 import React, {useState, useEffect} from "react";
 import {Switch, Route} from "react-router-dom"; 
+import GlobalStyles from '../styles/GlobalStyles';
 
 function App() {
   const [user, setUser] = useState(null)
@@ -21,6 +22,7 @@ function App() {
   
   return (
     <>
+    <GlobalStyles/>
     <NavBar user={user} setUser={setUser}/>
       <main>
         <Switch>

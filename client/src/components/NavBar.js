@@ -1,5 +1,11 @@
 import React from 'react'; 
 import {Link} from "react-router-dom";
+import { GiWaterBottle } from "react-icons/gi"
+
+//import styled components 
+import Button from '../styles/Button';
+import {Nav, NavLink, NavHomeLink} from '../styles/Nav';
+import Container from '../styles/Container';
 
 function NavBar({user, setUser}) {
     function handleLogout() { 
@@ -14,19 +20,22 @@ function NavBar({user, setUser}) {
     }
 
   return (
-    <header>
-        <nav>
-            <button as={Link} to="add">
+    <Nav>
+        <NavHomeLink to="/">
+            <GiWaterBottle />
+        </NavHomeLink>
+        <Container>
+            <NavLink to="dashboard">
                 Dashboard
-            </button>
-            <button as={Link} to="add">
+            </NavLink>
+            <NavLink as={Link} to="add">
                 Add drink
-            </button>
-            <button onClick={handleLogout}>
+            </NavLink>
+            <Button onClick={handleLogout} bg ='#000080' color='#fff'>
                 Logout
-            </button>
-        </nav>
-    </header>
+            </Button>
+        </Container>
+    </Nav>
   )
 }
 

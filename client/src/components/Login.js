@@ -1,5 +1,6 @@
 import React, {useState} from 'react'; 
 
+//Import styled components
 import Error from "../styles/Error.js";
 import Label from '../styles/Label.js';
 import Input from '../styles/Input.js';

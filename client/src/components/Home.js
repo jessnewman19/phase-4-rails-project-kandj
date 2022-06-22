@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import SignUp from './SignUp';
 import Login from './Login'; 
+import { GiWaterBottle } from "react-icons/gi"
+
+//Import styled components
 import styled from 'styled-components';
 import Button from '../styles/Button';
 
@@ -9,7 +12,7 @@ function Home({ onLogin }) {
 
   return (
     <Wrapper>
-        <Header>Hydration Nation</Header>
+        <Header> <GiWaterBottle /> Hydration Nation</Header>
         {showLogin ? (
             <>
             <Login onLogin={onLogin} />
