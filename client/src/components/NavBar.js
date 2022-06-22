@@ -1,5 +1,4 @@
 import React from 'react'; 
-import {Link} from "react-router-dom";
 import { GiWaterBottle } from "react-icons/gi"
 
 //import styled components 
@@ -21,14 +20,14 @@ function NavBar({user, setUser}) {
 
   return (
     <Nav>
-        <NavHomeLink to="/">
+        <NavHomeLink to="welcome">
             <GiWaterBottle />
         </NavHomeLink>
         <Container>
             <NavLink to="dashboard">
                 Dashboard
             </NavLink>
-            <NavLink as={Link} to="add">
+            <NavLink to="add">
                 Add drink
             </NavLink>
             <Button onClick={handleLogout} bg ='#000080' color='#fff'>
