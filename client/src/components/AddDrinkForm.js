@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'; 
-// import { useHistory } from 'react-router-dom';
 
 //import styled components
 import styled from 'styled-components';
@@ -10,6 +9,7 @@ import Button from '../styles/Button';
 import Error from '../styles/Error';
 
 function AddDrinkForm() {
+
     const [drinkType, setDrinkType] = useState("")
     const [hydrationLevel, setHydrationLevel] = useState("")
     const [content, setContent] = useState("")
@@ -18,7 +18,6 @@ function AddDrinkForm() {
     const [descriptions, setDescriptions] = useState([])
     const [errors, setErrors] = useState([])
     const [isLoading, setIsLoading] = useState(false)
-    // const history = useHistory()
 
 
     useEffect(() => {
@@ -58,8 +57,10 @@ function AddDrinkForm() {
         }).then((r) => {
             setIsLoading(false);
             if (r.ok) {
-                console.log("hello")
-                // history.push("/dashboard");
+                setDrinkType("")
+                setHydrationLevel("")
+                setContent("")
+                setLocation("")
             } else {
               r.json().then((err) => setErrors(err.errors));
             }
