@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'; 
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 //import styled components
 import styled from 'styled-components';
@@ -81,6 +81,7 @@ function AddDrinkForm() {
             </FormDiv>
             <FormDiv>
                 <Label>Level of hydration: </Label>
+                <P>*Please select number from 1-10</P>
                 <Input 
                 type="text"
                 id="hydrationLevel"
@@ -144,6 +145,11 @@ const Select = styled.select`
     font-size: 1rem;
     line-height: 1.5;
     padding: 4px;
+`
+
+const P = styled.p`
+    font-size: 0.7rem;
+    font-style: italic;
 `
 
 export default AddDrinkForm;
