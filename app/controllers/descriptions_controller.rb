@@ -1,5 +1,6 @@
 class DescriptionsController < ApplicationController
     # Authorize not working properly here. Need to figure out. 
+    
     skip_before_action :authorize
 
     def index 
