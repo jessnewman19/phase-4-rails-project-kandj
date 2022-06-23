@@ -1,4 +1,9 @@
+import React, { useEffect, useState } from "react";
+import DrinksCard from "./DrinksCard";
+
 const UserDashboard = ({ user }) => {
+  const [userDrinks, setUserDrinks] = useState({});
+
   let userDrinkGoal = 0;
   let userHasDrank = 0;
 
@@ -11,13 +16,24 @@ const UserDashboard = ({ user }) => {
   }
   setDrinkGoal();
 
-  function displayUserDrank() {
-    for (let i = 0; i < user.drinks.length; i++) {
-      userHasDrank += parseInt(user.drinks[i].hydration_level);
-      console.log("User Has Drank", userHasDrank);
-    }
-  }
-  displayUserDrank();
+  // function displayUserDrank() {
+  //   for (let i = 0; i < user.drinks.length; i++) {
+  //     userHasDrank += parseInt(user.drinks[i].hydration_level);
+  //     console.log(userDrinks);
+  //   }
+  // }
+  // displayUserDrank();
+
+  useEffect(() => {
+    fetch("/drinks")
+      .then((response) => response.json())
+      .then((response) => {
+        setUserDrinks(response);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  console.log(userDrinks);
 
   return (
     <div>
@@ -29,10 +45,14 @@ const UserDashboard = ({ user }) => {
         You need to drink {userDrinkGoal - userHasDrank} more ounces to be fully
         hydrated today!
       </h2>
-      <p>Drink Card</p>
-      <p>Drink Card</p>
-      <p>Drink Card</p>
-      <p>Drink Card</p>
+      {user.drinks.map((drink) => {
+        return (
+          <DrinksCard
+            drink_type={drink.drink_type}
+            hydration_level={drink.hydration_level}
+          />
+        );
+      })}
     </div>
   );
 };
