@@ -6,7 +6,7 @@ import Button from '../styles/Button';
 import {Nav, NavLink, Logo} from '../styles/Nav';
 import Container from '../styles/Container';
 
-function NavBar({user, setUser}) {
+function NavBar({ setUser}) {
     function handleLogout() { 
         fetch("/logout", { 
             method: "DELETE"

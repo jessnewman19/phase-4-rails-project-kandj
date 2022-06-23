@@ -23,7 +23,7 @@ function App() {
   return (
     <>
     <GlobalStyles/>
-      <NavBar user={user} setUser={setUser}/>
+      <NavBar setUser={setUser}/>
         <main>
           <Switch>
             <Route path="/add">

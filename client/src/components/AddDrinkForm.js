@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'; 
-// import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
 //import styled components
 import styled from 'styled-components';
@@ -13,12 +13,23 @@ function AddDrinkForm() {
     const [drinkType, setDrinkType] = useState("")
     const [hydrationLevel, setHydrationLevel] = useState("")
     const [content, setContent] = useState("")
+    const [contentId, setContentId] = useState("")
     const [location, setLocation] = useState("")
     const [descriptions, setDescriptions] = useState([])
     const [errors, setErrors] = useState([])
     const [isLoading, setIsLoading] = useState(false)
-    // const history = useHistory();
+    // const history = useHistory()
 
+
+    useEffect(() => {
+        if(content !== ""){
+          const filteredDescription = descriptions.find(description => { 
+            return description.content === content
+          })
+      
+          setContentId(filteredDescription.id)
+        }
+      }, [content])
 
     useEffect(() => { 
         fetch('/descriptions')
@@ -42,13 +53,13 @@ function AddDrinkForm() {
                 hydration_level: hydrationLevel, 
                 content, 
                 location,
-                description_id: 1,
+                description_id: parseInt(contentId),
             }),
         }).then((r) => {
             setIsLoading(false);
             if (r.ok) {
                 console.log("hello")
-            //   history.push("/");
+                // history.push("/dashboard");
             } else {
               r.json().then((err) => setErrors(err.errors));
             }
@@ -127,7 +138,7 @@ const Select = styled.select`
     border-radius: 6px;
     border: 1px solid transparent;
     border-color: #dbdbdb;
-    -webkit-appearance: none;
+    -webkit-appearance: auto;
     max-width: 100%;
     width: 100%;
     font-size: 1rem;
