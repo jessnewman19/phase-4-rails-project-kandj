@@ -20,7 +20,7 @@ export const NavLink = styled(Link)`
     display: flex;
     align-items: center;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 1.2rem;
     font-weight: 800;
     transition: all .5s ease;
     &:hover{
@@ -36,7 +36,7 @@ export const Logo = styled.div`
     display: flex;
     align-items: center;
     text-decoration: none;
-    font-size: 7.5rem;
+    font-size: 4rem;
     font-weight: 800;
 `
 

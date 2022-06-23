@@ -1,19 +1,16 @@
-# Project Template: React/Rails API
+# React/Rails API
 
 ## Description
 
-This project is scaffolded so that you can build a React frontend and Rails
-backend together, and easily deploy them to Heroku.
+This project is an application to help users track fluid intake throughout the day.
 
-## Requirements
+## Tech stack
 
-- Ruby 2.7.4
+- Ruby / Ruby on Rails
+- JavaScript
 - NodeJS (v16), and npm
 - Heroku CLI
 - Postgresql
-
-See Environment Setup below for instructions on installing these tools if you
-don't already have them.
 
 ## Setup
 

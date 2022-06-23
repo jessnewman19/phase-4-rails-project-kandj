@@ -7,7 +7,6 @@ import Input from '../styles/Input.js';
 import FormDiv from '../styles/FormDiv.js';
 import Button from '../styles/Button.js'
 
-
 function Login({ onLogin }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
