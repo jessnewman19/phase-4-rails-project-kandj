@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 //import styled components
 import styled from "styled-components";
@@ -8,55 +8,28 @@ import Input from "../styles/Input";
 import Button from "../styles/Button";
 import Error from "../styles/Error";
 
-function AddDrinkForm({ fetchUser }) {
+const EditDrink = ({ fetchUser, id }) => {
   const [drinkType, setDrinkType] = useState("");
   const [hydrationLevel, setHydrationLevel] = useState("");
-  const [content, setContent] = useState("");
-  const [contentId, setContentId] = useState("");
   const [location, setLocation] = useState("");
-  const [descriptions, setDescriptions] = useState([]);
   const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    if (content !== "") {
-      const filteredDescription = descriptions.find((description) => {
-        return description.content === content;
-      });
-
-      setContentId(filteredDescription.id);
-    }
-  }, [content]);
-
-  useEffect(() => {
-    fetch("/descriptions").then((r) => {
-      if (r.ok) {
-        r.json().then((description) => setDescriptions(description));
-      }
-    });
-  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
-    setIsLoading(true);
-    fetch("/drinks", {
-      method: "POST",
+    fetch(`/drinks/${id}`, {
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         drink_type: drinkType,
         hydration_level: hydrationLevel,
-        content,
-        location,
-        description_id: parseInt(contentId),
+        location: location,
       }),
     }).then((r) => {
-      setIsLoading(false);
       if (r.ok) {
         setDrinkType("");
         setHydrationLevel("");
-        setContent("");
         setLocation("");
       } else {
         r.json().then((err) => setErrors(err.errors));
@@ -66,9 +39,8 @@ function AddDrinkForm({ fetchUser }) {
   }
 
   return (
-    <Wrapper>
-      <Header>Add a drink! </Header>
-      <form onSubmit={handleSubmit}>
+    <div>
+      <form>
         <FormDiv>
           <Label>Type of drink: </Label>
           <Input
@@ -89,26 +61,6 @@ function AddDrinkForm({ fetchUser }) {
           />
         </FormDiv>
         <FormDiv>
-          <Label>Description: </Label>
-          <Select
-            name="descriptions"
-            id="descriptions"
-            defaultValue="default"
-            onChange={(e) => setContent(e.target.value)}
-          >
-            <option value="default" disabled>
-              Choose here
-            </option>
-            {descriptions.map((description) => {
-              return (
-                <option key={description.id} value={description.content}>
-                  {description.content}
-                </option>
-              );
-            })}
-          </Select>
-        </FormDiv>
-        <FormDiv>
           <Label>Location: </Label>
           <Input
             type="text"
@@ -118,19 +70,14 @@ function AddDrinkForm({ fetchUser }) {
           />
         </FormDiv>
         <FormDiv>
-          <Button type="submit" bg="#000080" color="#fff">
-            {isLoading ? "Loading..." : "Add to dashboard!"}
+          <Button onclick={handleSubmit} type="submit">
+            Submit
           </Button>
         </FormDiv>
-        <FormDiv>
-          {errors.map((error) => (
-            <Error key={error}>{error}</Error>
-          ))}
-        </FormDiv>
       </form>
-    </Wrapper>
+    </div>
   );
-}
+};
 
 const Header = styled.h1`
   font-family: "Permanent Marker";
@@ -162,4 +109,4 @@ const P = styled.p`
   font-style: italic;
 `;
 
-export default AddDrinkForm;
+export default EditDrink;
